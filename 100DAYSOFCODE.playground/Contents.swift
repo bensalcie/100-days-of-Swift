@@ -731,182 +731,585 @@ import UIKit
 
 
 //Lesson 10
-struct Album{
-    var artist:String
-    var year: String
-    var rating:Int
+//struct Album{
+//    var artist:String
+//    var year: String
+//    var rating:Int
+//    
+//    
+//    func printSummary(){
+//        print("\(artist) \(rating) in \(year)")
+//    }
+//}
+//
+//let album1 = Album(artist: "Jay Cole", year: "2029", rating:4)
+//album1.printSummary()
+//
+//struct Employee{
+//    let name:String
+//    var vacationRemaining:Int
+//    
+//    //Make it mutable
+//    mutating func takeVacation(days:Int){
+//        if vacationRemaining > days{
+//            vacationRemaining -= days
+//            print("Going for vacation ")
+//            print("Days remaining \(vacationRemaining)")
+//            
+//        }else{
+//            print("Oops! Cant go for Vacation")
+//
+//        }
+//    }
+//}
+//
+//var employee = Employee(name: "Ben Salcie", vacationRemaining: 33)
+//
+//employee.takeVacation(days: 67)
+//print(employee.name)
+//print(employee.vacationRemaining)
+//
+//
+//
+//struct NewEmployee{
+//    let name:String
+//    var daysTaken = 14
+//    var daysRemaining = 0
+//    var vacationRemaining :Int {
+//        get{
+//            daysTaken-daysRemaining
+//
+//        }
+//        set{
+//            achar.daysRemaining+=newValue
+//
+//        }
+//    }
+//}
+//
+//var achar = NewEmployee(name: "Sterling Acher",daysTaken: 14)
+//achar.daysRemaining+=4
+//achar.daysRemaining+=4
+//
+//print(achar.vacationRemaining)
+//
+//
+//struct Game {
+//    var score = 0 {
+//        didSet{
+//                print("Current score \(score)")
+//            
+//        }
+//    }
+//    
+//}
+//
+//var game = Game()
+//game.score += 10
+//game.score -= 3
+//game.score += 1
+//
+//struct App {
+//    var contacts = [String]() {
+//        willSet {
+//            print("Current value is: \(contacts)")
+//            print("New value will be: \(newValue)")
+//        }
+//
+//        didSet {
+//            print("There are now \(contacts.count) contacts.")
+//            print("Old value was \(oldValue)")
+//        }
+//    }
+//}
+//
+//var app = App()
+//app.contacts.append("Adrian E")
+//app.contacts.append("Allen W")
+//app.contacts.append("Ish S")
+//
+//
+//struct Player {
+//    let name: String
+//    let number: Int
+//
+//    init(name: String) {
+//        self.name = name
+//        self.number = Int.random(in: 1...10)
+//    }
+//}
+//
+//let player = Player(name: "Ben Salcie")
+//
+//print("Player is \(player)")
+//
+//struct BankAccount {
+//    private
+//    (set)var funds = 0
+//
+//    mutating func deposit(amount: Int) {
+//        funds += amount
+//    }
+//
+//    mutating func withdraw(amount: Int) -> Bool {
+//        if funds >= amount {
+//            funds -= amount
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//}
+//
+//
+//var account = BankAccount()
+//account.deposit(amount: 100)
+//let success = account.withdraw(amount: 200)
+//
+//if success {
+//    print("Withdrew money successfully")
+//} else {
+//    print("Failed to get the money")
+//}
+//
+//
+//struct School{
+//    static var studentCount = 0
+//    static func add(student:String){
+//        print("\(student) joined the school")
+//        studentCount+=1
+//    }
+//    
+//}
+//
+//print(School.studentCount)
+//print(School.add(student: "Ben Salcie student"))
+//print(School.add(student: "Benard Ngode student"))
+//print(School.studentCount)
+//struct AppData {
+//    static let version = "1.3 beta 2"
+//    static let saveFilename = "settings.json"
+//    static let homeURL = "https://www.hackingwithswift.com"
+//}
+//
+//
+////struct Employee {
+////    let username: String
+////    let password: String
+////
+////    static let example = Employee(username: "cfederighi", password: "hairforceone")
+////}
+//
+////
+////You can create your own structs by writing struct, giving it a name, then placing the struct’s code inside braces.
+////Structs can have variable and constants (known as properties) and functions (known as methods)
+////If a method tries to modify properties of its struct, you must mark it as mutating.
+////You can store properties in memory, or create computed properties that calculate a value every time they are accessed.
+////We can attach didSet and willSet property observers to properties inside a struct, which is helpful when we need to be sure that some code is always executed when the property changes.
+////Initializers are a bit like specialized functions, and Swift generates one for all structs using their property names.
+////You can create your own custom initializers if you want, but you must always make sure all properties in your struct have a value by the time the initializer finishes, and before you call any other methods.
+////We can use access to mark any properties and methods as being available or unavailable externally, as needed.
+////It’s possible to attach a property or methods directly to a struct, so you can use them without creating an instance of the struct.
+//
+//
+////Checkpoint 6
+//struct Car{
+//    let model:String
+//    let gear:GearType
+//    let numberOfSeats:Int
+//
+//    var currentgearValue :Int = 0
+//    
+//    mutating func changeGear(gearType:GearType,gearValue:Int){
+//        if gearType == GearType.up {
+//            currentgearValue+=gearValue
+//            
+//        }else{
+//        if currentgearValue >= gearValue{
+//                
+//                currentgearValue -= gearValue
+//            }
+//
+//        }
+//        
+//        
+//    }
+//}
+//
+//var car = Car(model: "TOYOTA CROWN", gear:GearType.down, numberOfSeats: 8)
+//car.changeGear(gearType: GearType.up, gearValue: 12)
+//
+//print(car.currentgearValue)
+//
+//enum GearType{
+//    case up,down
+//}
+
+
+//Lesson 12
+class Game{
+    var score = 0{
+        didSet{
+            print("Score for game \(score)")
+        }
+    }
+}
+
+let game  = Game()
+game.score+=45
+
+
+//Inheritance in classes.
+class Employee{
+    var hours :Int
     
+    init(hours: Int) {
+        self.hours = hours
+    }
     
     func printSummary(){
-        print("\(artist) \(rating) in \(year)")
-    }
-}
-
-let album1 = Album(artist: "Jay Cole", year: "2029", rating:4)
-album1.printSummary()
-
-struct Employee{
-    let name:String
-    var vacationRemaining:Int
-    
-    //Make it mutable
-    mutating func takeVacation(days:Int){
-        if vacationRemaining > days{
-            vacationRemaining -= days
-            print("Going for vacation ")
-            print("Days remaining \(vacationRemaining)")
-            
-        }else{
-            print("Oops! Cant go for Vacation")
-
-        }
-    }
-}
-
-var employee = Employee(name: "Ben Salcie", vacationRemaining: 33)
-
-employee.takeVacation(days: 67)
-print(employee.name)
-print(employee.vacationRemaining)
-
-
-
-struct NewEmployee{
-    let name:String
-    var daysTaken = 14
-    var daysRemaining = 0
-    var vacationRemaining :Int {
-        get{
-            daysTaken-daysRemaining
-
-        }
-        set{
-            achar.daysRemaining+=newValue
-
-        }
-    }
-}
-
-var achar = NewEmployee(name: "Sterling Acher",daysTaken: 14)
-achar.daysRemaining+=4
-achar.daysRemaining+=4
-
-print(achar.vacationRemaining)
-
-
-struct Game {
-    var score = 0 {
-        didSet{
-                print("Current score \(score)")
-            
-        }
+        print("I work every day")
     }
     
+   
 }
 
-var game = Game()
-game.score += 10
-game.score -= 3
-game.score += 1
-
-struct App {
-    var contacts = [String]() {
-        willSet {
-            print("Current value is: \(contacts)")
-            print("New value will be: \(newValue)")
-        }
-
-        didSet {
-            print("There are now \(contacts.count) contacts.")
-            print("Old value was \(oldValue)")
-        }
+class Developer:Employee{
+    func work(){
+        print("Developer coded  for \(hours) hours")
     }
-}
-
-var app = App()
-app.contacts.append("Adrian E")
-app.contacts.append("Allen W")
-app.contacts.append("Ish S")
-
-
-struct Player {
-    let name: String
-    let number: Int
-
-    init(name: String) {
-        self.name = name
-        self.number = Int.random(in: 1...10)
-    }
-}
-
-let player = Player(name: "Ben Salcie")
-
-print("Player is \(player)")
-
-struct BankAccount {
-    private
-    (set)var funds = 0
-
-    mutating func deposit(amount: Int) {
-        funds += amount
-    }
-
-    mutating func withdraw(amount: Int) -> Bool {
-        if funds >= amount {
-            funds -= amount
-            return true
-        } else {
-            return false
-        }
+    override
+    func printSummary(){
+        print("I work every day")
     }
 }
 
 
-var account = BankAccount()
-account.deposit(amount: 100)
-let success = account.withdraw(amount: 200)
-
-if success {
-    print("Withdrew money successfully")
-} else {
-    print("Failed to get the money")
-}
-
-
-struct School{
-    static var studentCount = 0
-    static func add(student:String){
-        print("\(student) joined the school")
-        studentCount+=1
+//Adding final restricts inheritance.
+class HumanResouse:Employee{
+    func work(){
+        print("This employee worked for \(hours) hours")
     }
-    
-}
-
-print(School.studentCount)
-print(School.add(student: "Ben Salcie student"))
-print(School.add(student: "Benard Ngode student"))
-print(School.studentCount)
-struct AppData {
-    static let version = "1.3 beta 2"
-    static let saveFilename = "settings.json"
-    static let homeURL = "https://www.hackingwithswift.com"
+    override
+    func printSummary(){
+        print("I work every day")
+    }
 }
 
 
-struct Employee {
-    let username: String
-    let password: String
+let developer = Developer(hours: 5)
+let hr = HumanResouse(hours: 10)
+developer.work()
+hr.work()
 
-    static let example = Employee(username: "cfederighi", password: "hairforceone")
+class Vehicle {
+    let isElectric: Bool
+
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
 }
 
+class Car: Vehicle {
+    let isConvertible: Bool
+
+    init(isConvertible: Bool,isElectric:Bool) {
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+    }
+}
+
+let teslaX = Car(isConvertible: false, isElectric: true)
+print("Car \(teslaX.isConvertible)")
+
+//Copying classes.
+//class User {
+//    var username = "Anonymous"
+//    
+//    //Deep copy.
+//    func copy() -> User {
+//           let user = User()
+//           user.username = username
+//           return user
+//       }
+//}
+//var user1 = User()
 //
-//You can create your own structs by writing struct, giving it a name, then placing the struct’s code inside braces.
-//Structs can have variable and constants (known as properties) and functions (known as methods)
-//If a method tries to modify properties of its struct, you must mark it as mutating.
-//You can store properties in memory, or create computed properties that calculate a value every time they are accessed.
-//We can attach didSet and willSet property observers to properties inside a struct, which is helpful when we need to be sure that some code is always executed when the property changes.
-//Initializers are a bit like specialized functions, and Swift generates one for all structs using their property names.
-//You can create your own custom initializers if you want, but you must always make sure all properties in your struct have a value by the time the initializer finishes, and before you call any other methods.
-//We can use access to mark any properties and methods as being available or unavailable externally, as needed.
-//It’s possible to attach a property or methods directly to a struct, so you can use them without creating an instance of the struct.
+//var user2 = user1
+//user2.username = "Taylor"
+//
+//print(user1.username)
+//print(user2.copy().username)
+
+//DEinitianlizer copy.
+
+class User {
+    let id: Int
+
+    init(id: Int) {
+        self.id = id
+        print("User \(id): I'm alive!")
+    }
+
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+for i in 1...3 {
+    let user = User(id: i)
+    print("User \(user.id): I'm in control!")
+}
+
+
+//So, we end up with four options:
+//
+//Constant instance, constant property – a signpost that always points to the same user, who always has the same name.
+//Constant instance, variable property – a signpost that always points to the same user, but their name can change.
+//Variable instance, constant property – a signpost that can point to different users, but their names never change.
+//Variable instance, variable property – a signpost that can point to different users, and those users can also change their names.
+
+
+//Checkpoint 7
+class Animal{
+    let legs:Int
+    
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+class Dog:Animal{
+    func speak(sound:String){
+    }
+}
+class Corgi:Dog{
+    override func speak(sound: String) {
+        print("Woof! woof!")
+    }
+}
+
+class Poodl:Dog{
+    override func speak(sound: String) {
+        print("Woooooof wooooof!")
+    }
+}
+class Cat:Animal{
+    let isTame:Bool
+    init(isTame: Bool) {
+        self.isTame = isTame
+        super.init(legs: 4)
+    }
+    func speak(sound:String){
+    }
+}
+
+class Persian:Cat{
+    override func speak(sound: String) {
+        print("Meauuuuuu!")
+    }
+}
+class Lion:Cat{
+    override func speak(sound: String) {
+        print("Meauuuuuu! lion")
+    }
+}
+
+let animal = Animal(legs: 4)
+let lion = Cat(isTame: false)
+lion.speak(sound: "Hoooooo")
+
+
+//Protocols
+//protocol Vehicle {
+//    func estimateTime(for distance: Int) -> Int
+//    func travel(distance: Int)
+//}
+
+protocol Calculator{
+    func sum(a:Int, b:Int)->Int
+    func subtract(a:Int, b:Int)->Int
+    func multiply(a:Int, b:Int)->Int
+    func devide(a:Int, b:Int)->Int
+}
+
+class Student:Calculator{
+    func sum(a: Int, b: Int) -> Int {
+        print("Sum \(a+b)")
+        return (a+b)
+
+    }
+    
+    func subtract(a: Int, b: Int) -> Int {
+        print("Subtraction \(a-b)")
+        return (a-b)
+
+    }
+    
+    func multiply(a: Int, b: Int) -> Int {
+                print("Multiplication \(a*b)")
+        return (a*b)
+
+    }
+    
+    func devide(a: Int, b: Int) -> Int {
+        print("Division \(a/b)")
+        return (a/b)
+
+
+    }
+    
+    func conqour(a:Int,b:Int) ->Int{
+        return 8900
+    }
+    
+}
+let student = Student()
+let sum = student.sum(a: 9, b: 10)
+print("Sum is \(sum)")
+
+//Equatables.
+
+func getRandomNumber() -> some Equatable {
+    Int.random(in: 1...6)
+}
+
+func getRandomBool() -> some Equatable {
+    Bool.random()
+}
+
+extension String {
+    func trimmed()->String{
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+let intro = "     Hi, my name is Ben Salcie and i am an Android/IOS Developer       "
+print(intro.trimmed())
+
+
+//Extensions on protocols.
+
+extension Collection{
+    func isNotEmpty()->Bool{
+        return !self.isEmpty
+    }
+}
+
+let guests = ["Mario", "Luigi", "Peach"]
+let isEmpty = guests.isNotEmpty()
+print("List is not empty? \(isEmpty)")
+
+extension Calculator{
+    func getCircumference(radius:Double)-> Double{
+        return 3.142*radius*radius
+    }
+}
+
+
+extension Numeric{
+    func squared()->Self{
+        return self*self
+        
+    }
+}
+
+
+let myage = 5
+let myagesquared = myage.squared()
+print("My age squared \(myagesquared)")
+
+struct Person: Comparable {
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        lhs.name < rhs.name
+
+    }
+    
+    let name: String
+}
+
+let user1 = Person(name: "Adele")
+let user2 = Person(name: "Adele")
+print("Person and person same? \(user1 == user2)")
+
+protocol Building{
+    func getSummary( rooms:Int,cost:Int,estateName:String,agentName: String )->String
+}
+struct House:Building{
+    func getSummary(rooms: Int, cost: Int, estateName: String, agentName: String) -> String {
+        return "Summary : House has \(rooms) rooms, loacated at \(estateName) , sold by \(agentName)"
+    }
+    
+    
+}
+
+struct Office :Building{
+    func getSummary(rooms: Int, cost: Int, estateName: String, agentName: String) -> String {
+       return "Summary : Office has \(rooms) rooms, loacated at \(estateName) , sold by \(agentName)"
+    }
+}
+
+
+let house = House().getSummary(rooms: 5, cost: 45321, estateName: "Mawingo", agentName: "Muia")
+
+let office = Office().getSummary(rooms: 10, cost: 2938832, estateName: "Eldoret", agentName: "Charity")
+
+print("House \(house)")
+print("Office\(office)")
+enum  Gender{
+    case Male,Female
+}
+let user = [
+    "Name": "Ben Salcie",
+    "Salary": 10_000.0,
+    "gender":Gender.Male
+] as [String : Any]
+
+
+let salary = user["Salary"]
+
+if let securedSalary = salary {
+    
+    print((salary as! Double) * (salary as! Double))
+
+}
+
+
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+
+        // 1: We *must* exit the function here
+        return
+    }
+
+    // 2: `number` is still available outside of `guard`
+    print("\(number) x \(number) is \(number * number)")
+}
+
+printSquare(of: 900002)
+//let name :String? =
+//nil
+//
+//guard let usern = name else{
+//    print("Did not find name")
+//    
+//    return ""
+//    }
+//
+//let newUser = usern
+//print("Username: \(usern)")
+let captains = [
+    "Enterprise": "Picard",
+    "Voyager": "Janeway",
+    "Defiant": "Sisko"
+]
+
+let new = captains["Serenity"] ?? "Hakuna Kitu"
+print(new)
+
+
+//Checkpoint 9
+
+func funRandomizer(integers:[Int?]) ->Int{ return (integers.randomElement() ?? Int.random(in: 1...100))!}
+
+print(funRandomizer(integers: []))
