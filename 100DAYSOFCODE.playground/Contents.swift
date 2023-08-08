@@ -598,47 +598,315 @@ import UIKit
 
 
 
-enum RootErrors: Error{
-    case outofbounds, noroot
+//enum RootErrors: Error{
+//    case outofbounds, noroot
+//}
+//
+//func getSquareRoot(for number:Int) throws ->  Int {
+//    var squareroot = 0
+//    // Check number bounds .
+//    if number < 1 || number > 10_000 {
+//        throw RootErrors.outofbounds
+//    }
+//    
+//    for root in 1...100{
+//        if root * root == number {
+//            
+//            squareroot  = root
+//            
+//        }
+//    }
+//    
+//    if squareroot == 0 {
+//        throw RootErrors.noroot
+//    }
+//    return squareroot
+//    
+//    
+//}
+//
+//do{
+//    let result = try getSquareRoot(for: 25)
+//    print("Squareroot is \(result) ")
+//
+//    
+//}catch RootErrors.noroot{
+//
+//    print("No root was found")
+//}
+//catch RootErrors.outofbounds{
+//
+//    print("Out of bounds")
+//}
+//catch{
+//    print("Something went wrong")
+//
+//}
+//
+//let team = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+//
+//
+//let captainFirstTeam = team.sorted(by: { (name1: String, name2: String) -> Bool in
+//    if name1 == "Tiffany" {
+//        return true
+//    } else if name2 == "Tiffany" {
+//        return false
+//    }
+//
+//    return name1 < name2
+//})
+//
+//
+//print("Captain staring: \(captainFirstTeam)")
+//
+//
+////Sort.
+//let sortedTeams = team.sorted { $0 < $1
+//}
+//print("Sorted: \(sortedTeams)")
+//
+//
+////Filter
+//let filtered = team.filter{
+//    $0.hasPrefix("S")
+//}
+//
+//print("Filtered: \(filtered)")
+//
+//
+////Uppercases.
+//let uppercasedTeams = team.map{
+//    $0.uppercased()
+//}
+//print("Uppercased: \(uppercasedTeams)")
+//
+//
+//
+//func generateNumber() -> Int {
+//    Int.random(in: 1...20)
+//}
+//
+//
+//func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+//    var numbers = [Int]()
+//
+//    for _ in 0..<size {
+//        let newNumber = generator()
+//        numbers.append(newNumber)
+//    }
+//
+//    return numbers
+//}
+//
+//
+//
+//let newRolls = makeArray(size: 1000000, using: generateNumber)
+//print(newRolls)
+
+
+//Checkpoint 5.
+//let luckyNumbers = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
+//
+//
+//let nonEvenNumbers = luckyNumbers.filter{ $0 % 2 != 0
+//}
+//print("Even numbers: \(nonEvenNumbers)")
+//
+////Sort in ascending.
+//let ascendingSorted = nonEvenNumbers.sorted{
+//    $0 < $1
+//}
+//print("Sorted array \(ascendingSorted)")
+//
+////Map to sting with number.
+//let mapString = ascendingSorted.map{
+//    "\($0) is a Lucky number"
+//}
+//print(mapString)
+//
+////Printing one by one
+//for luckynumber in mapString {
+//    print(luckynumber)
+//}
+
+
+//Lesson 10
+struct Album{
+    var artist:String
+    var year: String
+    var rating:Int
+    
+    
+    func printSummary(){
+        print("\(artist) \(rating) in \(year)")
+    }
 }
 
-func getSquareRoot(for number:Int) throws ->  Int {
-    var squareroot = 0
-    // Check number bounds .
-    if number < 1 || number > 10_000 {
-        throw RootErrors.outofbounds
-    }
+let album1 = Album(artist: "Jay Cole", year: "2029", rating:4)
+album1.printSummary()
+
+struct Employee{
+    let name:String
+    var vacationRemaining:Int
     
-    for root in 1...100{
-        if root * root == number {
+    //Make it mutable
+    mutating func takeVacation(days:Int){
+        if vacationRemaining > days{
+            vacationRemaining -= days
+            print("Going for vacation ")
+            print("Days remaining \(vacationRemaining)")
             
-            squareroot  = root
+        }else{
+            print("Oops! Cant go for Vacation")
+
+        }
+    }
+}
+
+var employee = Employee(name: "Ben Salcie", vacationRemaining: 33)
+
+employee.takeVacation(days: 67)
+print(employee.name)
+print(employee.vacationRemaining)
+
+
+
+struct NewEmployee{
+    let name:String
+    var daysTaken = 14
+    var daysRemaining = 0
+    var vacationRemaining :Int {
+        get{
+            daysTaken-daysRemaining
+
+        }
+        set{
+            achar.daysRemaining+=newValue
+
+        }
+    }
+}
+
+var achar = NewEmployee(name: "Sterling Acher",daysTaken: 14)
+achar.daysRemaining+=4
+achar.daysRemaining+=4
+
+print(achar.vacationRemaining)
+
+
+struct Game {
+    var score = 0 {
+        didSet{
+                print("Current score \(score)")
             
         }
     }
     
-    if squareroot == 0 {
-        throw RootErrors.noroot
+}
+
+var game = Game()
+game.score += 10
+game.score -= 3
+game.score += 1
+
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value is: \(contacts)")
+            print("New value will be: \(newValue)")
+        }
+
+        didSet {
+            print("There are now \(contacts.count) contacts.")
+            print("Old value was \(oldValue)")
+        }
     }
-    return squareroot
+}
+
+var app = App()
+app.contacts.append("Adrian E")
+app.contacts.append("Allen W")
+app.contacts.append("Ish S")
+
+
+struct Player {
+    let name: String
+    let number: Int
+
+    init(name: String) {
+        self.name = name
+        self.number = Int.random(in: 1...10)
+    }
+}
+
+let player = Player(name: "Ben Salcie")
+
+print("Player is \(player)")
+
+struct BankAccount {
+    private
+    (set)var funds = 0
+
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds >= amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+
+var account = BankAccount()
+account.deposit(amount: 100)
+let success = account.withdraw(amount: 200)
+
+if success {
+    print("Withdrew money successfully")
+} else {
+    print("Failed to get the money")
+}
+
+
+struct School{
+    static var studentCount = 0
+    static func add(student:String){
+        print("\(student) joined the school")
+        studentCount+=1
+    }
     
-    
 }
 
-do{
-    let result = try getSquareRoot(for: 25)
-    print("Squareroot is \(result) ")
-
-    
-}catch RootErrors.noroot{
-
-    print("No root was found")
+print(School.studentCount)
+print(School.add(student: "Ben Salcie student"))
+print(School.add(student: "Benard Ngode student"))
+print(School.studentCount)
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let saveFilename = "settings.json"
+    static let homeURL = "https://www.hackingwithswift.com"
 }
-catch RootErrors.outofbounds{
 
-    print("Out of bounds")
-}
-catch{
-    print("Something went wrong")
 
+struct Employee {
+    let username: String
+    let password: String
+
+    static let example = Employee(username: "cfederighi", password: "hairforceone")
 }
+
+//
+//You can create your own structs by writing struct, giving it a name, then placing the struct’s code inside braces.
+//Structs can have variable and constants (known as properties) and functions (known as methods)
+//If a method tries to modify properties of its struct, you must mark it as mutating.
+//You can store properties in memory, or create computed properties that calculate a value every time they are accessed.
+//We can attach didSet and willSet property observers to properties inside a struct, which is helpful when we need to be sure that some code is always executed when the property changes.
+//Initializers are a bit like specialized functions, and Swift generates one for all structs using their property names.
+//You can create your own custom initializers if you want, but you must always make sure all properties in your struct have a value by the time the initializer finishes, and before you call any other methods.
+//We can use access to mark any properties and methods as being available or unavailable externally, as needed.
+//It’s possible to attach a property or methods directly to a struct, so you can use them without creating an instance of the struct.
